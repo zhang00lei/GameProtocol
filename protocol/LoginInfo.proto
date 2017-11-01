@@ -7,8 +7,9 @@ message CS_PlayerLogin{
 }
 message SC_PlayerLogin{
 	enum LoginResult{
-		ACCOUNT_ERROR=0;
-		PWD_ERROR=1;
+		SUCCESS=0;
+		ACCOUNT_ERROR=1;
+		PWD_ERROR=2;
 	}
 	LoginResult loginResult=1;
 }
@@ -19,7 +20,8 @@ message CS_PlayerRegister{
 }
 message SC_PlayerRegister{
 	enum RegisterResult{
-		ACCOUNT_ERROR=0;
+		SUCCESS=0;
+		ACCOUNT_ERROR=1;
 	}
 	RegisterResult registerResult=1;
 }

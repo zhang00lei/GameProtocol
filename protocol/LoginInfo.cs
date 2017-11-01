@@ -41,9 +41,9 @@ namespace PlayerLogin
   {
     public SC_PlayerLogin() {}
     
-    private PlayerLogin.SC_PlayerLogin.LoginResult _loginResult = PlayerLogin.SC_PlayerLogin.LoginResult.ACCOUNT_ERROR;
+    private PlayerLogin.SC_PlayerLogin.LoginResult _loginResult = PlayerLogin.SC_PlayerLogin.LoginResult.SUCCESS;
     [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"loginResult", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(PlayerLogin.SC_PlayerLogin.LoginResult.ACCOUNT_ERROR)]
+    [global::System.ComponentModel.DefaultValue(PlayerLogin.SC_PlayerLogin.LoginResult.SUCCESS)]
     public PlayerLogin.SC_PlayerLogin.LoginResult loginResult
     {
       get { return _loginResult; }
@@ -53,11 +53,14 @@ namespace PlayerLogin
     public enum LoginResult
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ACCOUNT_ERROR", Value=0)]
-      ACCOUNT_ERROR = 0,
+      [global::ProtoBuf.ProtoEnum(Name=@"SUCCESS", Value=0)]
+      SUCCESS = 0,
             
-      [global::ProtoBuf.ProtoEnum(Name=@"PWD_ERROR", Value=1)]
-      PWD_ERROR = 1
+      [global::ProtoBuf.ProtoEnum(Name=@"ACCOUNT_ERROR", Value=1)]
+      ACCOUNT_ERROR = 1,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"PWD_ERROR", Value=2)]
+      PWD_ERROR = 2
     }
   
     private global::ProtoBuf.IExtension extensionObject;
@@ -96,9 +99,9 @@ namespace PlayerLogin
   {
     public SC_PlayerRegister() {}
     
-    private PlayerLogin.SC_PlayerRegister.RegisterResult _registerResult = PlayerLogin.SC_PlayerRegister.RegisterResult.ACCOUNT_ERROR;
+    private PlayerLogin.SC_PlayerRegister.RegisterResult _registerResult = PlayerLogin.SC_PlayerRegister.RegisterResult.SUCCESS;
     [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"registerResult", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(PlayerLogin.SC_PlayerRegister.RegisterResult.ACCOUNT_ERROR)]
+    [global::System.ComponentModel.DefaultValue(PlayerLogin.SC_PlayerRegister.RegisterResult.SUCCESS)]
     public PlayerLogin.SC_PlayerRegister.RegisterResult registerResult
     {
       get { return _registerResult; }
@@ -108,8 +111,11 @@ namespace PlayerLogin
     public enum RegisterResult
     {
             
-      [global::ProtoBuf.ProtoEnum(Name=@"ACCOUNT_ERROR", Value=0)]
-      ACCOUNT_ERROR = 0
+      [global::ProtoBuf.ProtoEnum(Name=@"SUCCESS", Value=0)]
+      SUCCESS = 0,
+            
+      [global::ProtoBuf.ProtoEnum(Name=@"ACCOUNT_ERROR", Value=1)]
+      ACCOUNT_ERROR = 1
     }
   
     private global::ProtoBuf.IExtension extensionObject;
