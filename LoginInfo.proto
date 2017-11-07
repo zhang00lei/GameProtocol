@@ -1,0 +1,28 @@
+syntax="proto3";
+package PlayerLogin;
+
+message CS_PlayerLogin{
+	string account=1;
+	string pwd=2;
+}
+message SC_PlayerLogin{
+	enum LoginResult{
+		SUCCESS=0;
+		ACCOUNT_ERROR=1;
+		PWD_ERROR=2;
+	}
+	LoginResult loginResult=1;
+}
+
+message CS_PlayerRegister{
+	string account=1;
+	string pwd=2;
+}
+message SC_PlayerRegister{
+	enum RegisterResult{
+		SUCCESS=0;
+		ACCOUNT_ERROR=1;
+	}
+	RegisterResult registerResult=1;
+}
+
