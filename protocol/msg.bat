@@ -1,4 +1,4 @@
-protogen -i:login.proto -o:Login.cs
-protoc --go_out=. login.proto
-protoc --plugin=protoc-gen-lua="..\pluginLua\protoc-gen-lua.bat" --lua_out=. login.proto
+protogen -i:LandlordsProto.proto -o:LandlordsProto.cs
+protoc --go_out=. LandlordsProto.proto
+protoc --plugin=protoc-gen-lua="..\pluginLua\protoc-gen-lua.bat" --lua_out=. LandlordsProto.proto
 pause

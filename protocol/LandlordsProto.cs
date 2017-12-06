@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from: LoginInfo.proto
+// Generated from: LandlordsProto.proto
 namespace PlayerLogin
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CS_PlayerLogin")]
