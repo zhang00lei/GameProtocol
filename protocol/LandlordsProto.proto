@@ -1,5 +1,5 @@
 syntax="proto3";
-package PlayerLogin;
+package msg;
 
 message CS_PlayerLogin{
 	string account=1;

@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 
 // Generated from: LandlordsProto.proto
-namespace PlayerLogin
+namespace msg
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CS_PlayerLogin")]
   public partial class CS_PlayerLogin : global::ProtoBuf.IExtensible
@@ -41,10 +41,10 @@ namespace PlayerLogin
   {
     public SC_PlayerLogin() {}
     
-    private PlayerLogin.SC_PlayerLogin.LoginResult _loginResult = PlayerLogin.SC_PlayerLogin.LoginResult.SUCCESS;
+    private msg.SC_PlayerLogin.LoginResult _loginResult = msg.SC_PlayerLogin.LoginResult.SUCCESS;
     [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"loginResult", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(PlayerLogin.SC_PlayerLogin.LoginResult.SUCCESS)]
-    public PlayerLogin.SC_PlayerLogin.LoginResult loginResult
+    [global::System.ComponentModel.DefaultValue(msg.SC_PlayerLogin.LoginResult.SUCCESS)]
+    public msg.SC_PlayerLogin.LoginResult loginResult
     {
       get { return _loginResult; }
       set { _loginResult = value; }
@@ -99,10 +99,10 @@ namespace PlayerLogin
   {
     public SC_PlayerRegister() {}
     
-    private PlayerLogin.SC_PlayerRegister.RegisterResult _registerResult = PlayerLogin.SC_PlayerRegister.RegisterResult.SUCCESS;
+    private msg.SC_PlayerRegister.RegisterResult _registerResult = msg.SC_PlayerRegister.RegisterResult.SUCCESS;
     [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"registerResult", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(PlayerLogin.SC_PlayerRegister.RegisterResult.SUCCESS)]
-    public PlayerLogin.SC_PlayerRegister.RegisterResult registerResult
+    [global::System.ComponentModel.DefaultValue(msg.SC_PlayerRegister.RegisterResult.SUCCESS)]
+    public msg.SC_PlayerRegister.RegisterResult registerResult
     {
       get { return _registerResult; }
       set { _registerResult = value; }
