@@ -1,0 +1,30 @@
+package platform;
+//平台登陆服务器相关协议
+message RequestAuth
+{
+  required string account  = 1;
+  required string password = 2;
+}
+
+message ResponseAuth
+{
+  required sint32 error = 1;
+  optional string key   = 2;
+}
+
+message RequestServerList
+{
+}
+
+message ResponsetServerList
+{
+  message Server
+  {
+    optional string name   = 1;
+    optional string ip     = 2;
+    optional sint32 port   = 3;
+    optional sint32 status = 4;
+  }
+
+  repeated Server serInfo = 1;
+}

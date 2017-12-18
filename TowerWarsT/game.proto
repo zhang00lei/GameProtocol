@@ -1,0 +1,12 @@
+package GameProto;
+//游戏服务器相关协议
+message RequestLogin
+{
+  required string account  = 1;
+  required string key      = 2;
+}
+
+message ResponseLogin
+{
+  required sint32 error = 1;
+}
