@@ -41,28 +41,14 @@ namespace msg
   {
     public SC_PlayerLogin() {}
     
-    private msg.SC_PlayerLogin.LoginResult _loginResult = msg.SC_PlayerLogin.LoginResult.SUCCESS;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"loginResult", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(msg.SC_PlayerLogin.LoginResult.SUCCESS)]
-    public msg.SC_PlayerLogin.LoginResult loginResult
+    private int _result = default(int);
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int result
     {
-      get { return _loginResult; }
-      set { _loginResult = value; }
+      get { return _result; }
+      set { _result = value; }
     }
-    [global::ProtoBuf.ProtoContract(Name=@"LoginResult")]
-    public enum LoginResult
-    {
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"SUCCESS", Value=0)]
-      SUCCESS = 0,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"ACCOUNT_ERROR", Value=1)]
-      ACCOUNT_ERROR = 1,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"PWD_ERROR", Value=2)]
-      PWD_ERROR = 2
-    }
-  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -99,25 +85,42 @@ namespace msg
   {
     public SC_PlayerRegister() {}
     
-    private msg.SC_PlayerRegister.RegisterResult _registerResult = msg.SC_PlayerRegister.RegisterResult.SUCCESS;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"registerResult", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(msg.SC_PlayerRegister.RegisterResult.SUCCESS)]
-    public msg.SC_PlayerRegister.RegisterResult registerResult
+    private int _result = default(int);
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int result
     {
-      get { return _registerResult; }
-      set { _registerResult = value; }
+      get { return _result; }
+      set { _result = value; }
     }
-    [global::ProtoBuf.ProtoContract(Name=@"RegisterResult")]
-    public enum RegisterResult
-    {
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"SUCCESS", Value=0)]
-      SUCCESS = 0,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"ACCOUNT_ERROR", Value=1)]
-      ACCOUNT_ERROR = 1
-    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CS_Heartbeat")]
+  public partial class CS_Heartbeat : global::ProtoBuf.IExtensible
+  {
+    public CS_Heartbeat() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"SC_Heartbeat")]
+  public partial class SC_Heartbeat : global::ProtoBuf.IExtensible
+  {
+    public SC_Heartbeat() {}
+    
+    private long _serverTime = default(long);
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"serverTime", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::System.ComponentModel.DefaultValue(default(long))]
+    public long serverTime
+    {
+      get { return _serverTime; }
+      set { _serverTime = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

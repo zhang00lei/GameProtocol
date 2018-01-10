@@ -6,12 +6,8 @@ message CS_PlayerLogin{
 	string pwd=2;
 }
 message SC_PlayerLogin{
-	enum LoginResult{
-		SUCCESS=0;
-		ACCOUNT_ERROR=1;
-		PWD_ERROR=2;
-	}
-	LoginResult loginResult=1;
+	//0成功 1账号错误 2密码错误
+	sint32 result=1; 
 }
 
 message CS_PlayerRegister{
@@ -19,10 +15,27 @@ message CS_PlayerRegister{
 	string pwd=2;
 }
 message SC_PlayerRegister{
-	enum RegisterResult{
-		SUCCESS=0;
-		ACCOUNT_ERROR=1;
-	}
-	RegisterResult registerResult=1;
+	//0成功 1账号错误
+	sint32 result =1; 
+}
+
+message PlayerInfo{
+	sint32 playerId=1;
+	string playerName=2;
+	uint64 playerCoin=3;
+}
+
+message CS_PlayerInfo{
+	sint32 playerId=1;
+}
+message SC_PlayerInfo{
+	PlayerInfo playerInfo=1;
+}
+
+message CS_Heartbeat{
+	
+}
+message SC_Heartbeat{
+	sint64 serverTime=1;
 }
 
