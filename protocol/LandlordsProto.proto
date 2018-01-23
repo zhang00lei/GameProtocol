@@ -48,11 +48,13 @@ message CS_PlayerReady{
 message SC_PlayerReady{
 	sint32 result = 1;
 }
+
 //用户取消准备
 message CS_PlayerCancelReady{
 	uint64 playerId=1;
 }
 message SC_PlayerCancelReady{
+	//0:成功 -1:失败
 	sint32 result = 1;
 }
 

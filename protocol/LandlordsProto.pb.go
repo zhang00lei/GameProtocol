@@ -277,6 +277,7 @@ func (m *CS_PlayerCancelReady) GetPlayerId() uint64 {
 }
 
 type SC_PlayerCancelReady struct {
+	// 0:成功 -1:失败
 	Result int32 `protobuf:"zigzag32,1,opt,name=result" json:"result,omitempty"`
 }
 
