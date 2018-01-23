@@ -8,6 +8,7 @@ message CS_PlayerLogin{
 message SC_PlayerLogin{
 	//0成功 1账号错误 2密码错误
 	sint32 result=1; 
+	uint64 playerId=2;
 }
 
 message CS_PlayerRegister{
@@ -20,9 +21,10 @@ message SC_PlayerRegister{
 }
 
 message PlayerInfo{
-	sint32 playerId=1;
-	string playerName=2;
-	uint64 playerCoin=3;
+	uint64 playerId=1;
+	string playerAccount=2;
+	string playerName=3;
+	uint64 playerCoin=4;
 }
 
 message CS_PlayerInfo{
@@ -39,3 +41,24 @@ message SC_Heartbeat{
 	sint64 serverTime=1;
 }
 
+//用户准备
+message CS_PlayerReady{
+	uint64 playerId=1;
+}
+message SC_PlayerReady{
+	sint32 result = 1;
+}
+//用户取消准备
+message CS_PlayerCancelReady{
+	uint64 playerId=1;
+}
+message SC_PlayerCancelReady{
+	sint32 result = 1;
+}
+
+//下发卡牌信息
+message SC_PlayerCard{
+	//cardId/4==卡牌值
+	//cardId%4==卡牌类型(0:红 1:方 2:黑 3:梅)
+	repeated sint32 cardId = 1;
+}

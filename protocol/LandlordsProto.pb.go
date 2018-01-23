@@ -12,8 +12,16 @@ It has these top-level messages:
 	SC_PlayerLogin
 	CS_PlayerRegister
 	SC_PlayerRegister
+	PlayerInfo
+	CS_PlayerInfo
+	SC_PlayerInfo
 	CS_Heartbeat
 	SC_Heartbeat
+	CS_PlayerReady
+	SC_PlayerReady
+	CS_PlayerCancelReady
+	SC_PlayerCancelReady
+	SC_PlayerCard
 */
 package msg
 
@@ -58,7 +66,8 @@ func (m *CS_PlayerLogin) GetPwd() string {
 
 type SC_PlayerLogin struct {
 	// 0成功 1账号错误 2密码错误
-	Result int32 `protobuf:"zigzag32,1,opt,name=result" json:"result,omitempty"`
+	Result   int32  `protobuf:"zigzag32,1,opt,name=result" json:"result,omitempty"`
+	PlayerId uint64 `protobuf:"varint,2,opt,name=playerId" json:"playerId,omitempty"`
 }
 
 func (m *SC_PlayerLogin) Reset()                    { *m = SC_PlayerLogin{} }
@@ -69,6 +78,13 @@ func (*SC_PlayerLogin) Descriptor() ([]byte, []int) { return fileDescriptor0, []
 func (m *SC_PlayerLogin) GetResult() int32 {
 	if m != nil {
 		return m.Result
+	}
+	return 0
+}
+
+func (m *SC_PlayerLogin) GetPlayerId() uint64 {
+	if m != nil {
+		return m.PlayerId
 	}
 	return 0
 }
@@ -114,13 +130,85 @@ func (m *SC_PlayerRegister) GetResult() int32 {
 	return 0
 }
 
+type PlayerInfo struct {
+	PlayerId      uint64 `protobuf:"varint,1,opt,name=playerId" json:"playerId,omitempty"`
+	PlayerAccount string `protobuf:"bytes,2,opt,name=playerAccount" json:"playerAccount,omitempty"`
+	PlayerName    string `protobuf:"bytes,3,opt,name=playerName" json:"playerName,omitempty"`
+	PlayerCoin    uint64 `protobuf:"varint,4,opt,name=playerCoin" json:"playerCoin,omitempty"`
+}
+
+func (m *PlayerInfo) Reset()                    { *m = PlayerInfo{} }
+func (m *PlayerInfo) String() string            { return proto.CompactTextString(m) }
+func (*PlayerInfo) ProtoMessage()               {}
+func (*PlayerInfo) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
+
+func (m *PlayerInfo) GetPlayerId() uint64 {
+	if m != nil {
+		return m.PlayerId
+	}
+	return 0
+}
+
+func (m *PlayerInfo) GetPlayerAccount() string {
+	if m != nil {
+		return m.PlayerAccount
+	}
+	return ""
+}
+
+func (m *PlayerInfo) GetPlayerName() string {
+	if m != nil {
+		return m.PlayerName
+	}
+	return ""
+}
+
+func (m *PlayerInfo) GetPlayerCoin() uint64 {
+	if m != nil {
+		return m.PlayerCoin
+	}
+	return 0
+}
+
+type CS_PlayerInfo struct {
+	PlayerId int32 `protobuf:"zigzag32,1,opt,name=playerId" json:"playerId,omitempty"`
+}
+
+func (m *CS_PlayerInfo) Reset()                    { *m = CS_PlayerInfo{} }
+func (m *CS_PlayerInfo) String() string            { return proto.CompactTextString(m) }
+func (*CS_PlayerInfo) ProtoMessage()               {}
+func (*CS_PlayerInfo) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{5} }
+
+func (m *CS_PlayerInfo) GetPlayerId() int32 {
+	if m != nil {
+		return m.PlayerId
+	}
+	return 0
+}
+
+type SC_PlayerInfo struct {
+	PlayerInfo *PlayerInfo `protobuf:"bytes,1,opt,name=playerInfo" json:"playerInfo,omitempty"`
+}
+
+func (m *SC_PlayerInfo) Reset()                    { *m = SC_PlayerInfo{} }
+func (m *SC_PlayerInfo) String() string            { return proto.CompactTextString(m) }
+func (*SC_PlayerInfo) ProtoMessage()               {}
+func (*SC_PlayerInfo) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{6} }
+
+func (m *SC_PlayerInfo) GetPlayerInfo() *PlayerInfo {
+	if m != nil {
+		return m.PlayerInfo
+	}
+	return nil
+}
+
 type CS_Heartbeat struct {
 }
 
 func (m *CS_Heartbeat) Reset()                    { *m = CS_Heartbeat{} }
 func (m *CS_Heartbeat) String() string            { return proto.CompactTextString(m) }
 func (*CS_Heartbeat) ProtoMessage()               {}
-func (*CS_Heartbeat) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
+func (*CS_Heartbeat) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{7} }
 
 type SC_Heartbeat struct {
 	ServerTime int64 `protobuf:"zigzag64,1,opt,name=serverTime" json:"serverTime,omitempty"`
@@ -129,7 +217,7 @@ type SC_Heartbeat struct {
 func (m *SC_Heartbeat) Reset()                    { *m = SC_Heartbeat{} }
 func (m *SC_Heartbeat) String() string            { return proto.CompactTextString(m) }
 func (*SC_Heartbeat) ProtoMessage()               {}
-func (*SC_Heartbeat) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{5} }
+func (*SC_Heartbeat) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{8} }
 
 func (m *SC_Heartbeat) GetServerTime() int64 {
 	if m != nil {
@@ -138,30 +226,133 @@ func (m *SC_Heartbeat) GetServerTime() int64 {
 	return 0
 }
 
+// 用户准备
+type CS_PlayerReady struct {
+	PlayerId uint64 `protobuf:"varint,1,opt,name=playerId" json:"playerId,omitempty"`
+}
+
+func (m *CS_PlayerReady) Reset()                    { *m = CS_PlayerReady{} }
+func (m *CS_PlayerReady) String() string            { return proto.CompactTextString(m) }
+func (*CS_PlayerReady) ProtoMessage()               {}
+func (*CS_PlayerReady) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{9} }
+
+func (m *CS_PlayerReady) GetPlayerId() uint64 {
+	if m != nil {
+		return m.PlayerId
+	}
+	return 0
+}
+
+type SC_PlayerReady struct {
+	Result int32 `protobuf:"zigzag32,1,opt,name=result" json:"result,omitempty"`
+}
+
+func (m *SC_PlayerReady) Reset()                    { *m = SC_PlayerReady{} }
+func (m *SC_PlayerReady) String() string            { return proto.CompactTextString(m) }
+func (*SC_PlayerReady) ProtoMessage()               {}
+func (*SC_PlayerReady) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{10} }
+
+func (m *SC_PlayerReady) GetResult() int32 {
+	if m != nil {
+		return m.Result
+	}
+	return 0
+}
+
+// 用户取消准备
+type CS_PlayerCancelReady struct {
+	PlayerId uint64 `protobuf:"varint,1,opt,name=playerId" json:"playerId,omitempty"`
+}
+
+func (m *CS_PlayerCancelReady) Reset()                    { *m = CS_PlayerCancelReady{} }
+func (m *CS_PlayerCancelReady) String() string            { return proto.CompactTextString(m) }
+func (*CS_PlayerCancelReady) ProtoMessage()               {}
+func (*CS_PlayerCancelReady) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{11} }
+
+func (m *CS_PlayerCancelReady) GetPlayerId() uint64 {
+	if m != nil {
+		return m.PlayerId
+	}
+	return 0
+}
+
+type SC_PlayerCancelReady struct {
+	Result int32 `protobuf:"zigzag32,1,opt,name=result" json:"result,omitempty"`
+}
+
+func (m *SC_PlayerCancelReady) Reset()                    { *m = SC_PlayerCancelReady{} }
+func (m *SC_PlayerCancelReady) String() string            { return proto.CompactTextString(m) }
+func (*SC_PlayerCancelReady) ProtoMessage()               {}
+func (*SC_PlayerCancelReady) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{12} }
+
+func (m *SC_PlayerCancelReady) GetResult() int32 {
+	if m != nil {
+		return m.Result
+	}
+	return 0
+}
+
+// 下发卡牌信息
+type SC_PlayerCard struct {
+	// cardId/4==卡牌值
+	// cardId%4==卡牌类型(0:红 1:方 2:黑 3:梅)
+	CardId []int32 `protobuf:"zigzag32,1,rep,packed,name=cardId" json:"cardId,omitempty"`
+}
+
+func (m *SC_PlayerCard) Reset()                    { *m = SC_PlayerCard{} }
+func (m *SC_PlayerCard) String() string            { return proto.CompactTextString(m) }
+func (*SC_PlayerCard) ProtoMessage()               {}
+func (*SC_PlayerCard) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{13} }
+
+func (m *SC_PlayerCard) GetCardId() []int32 {
+	if m != nil {
+		return m.CardId
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*CS_PlayerLogin)(nil), "msg.CS_PlayerLogin")
 	proto.RegisterType((*SC_PlayerLogin)(nil), "msg.SC_PlayerLogin")
 	proto.RegisterType((*CS_PlayerRegister)(nil), "msg.CS_PlayerRegister")
 	proto.RegisterType((*SC_PlayerRegister)(nil), "msg.SC_PlayerRegister")
+	proto.RegisterType((*PlayerInfo)(nil), "msg.PlayerInfo")
+	proto.RegisterType((*CS_PlayerInfo)(nil), "msg.CS_PlayerInfo")
+	proto.RegisterType((*SC_PlayerInfo)(nil), "msg.SC_PlayerInfo")
 	proto.RegisterType((*CS_Heartbeat)(nil), "msg.CS_Heartbeat")
 	proto.RegisterType((*SC_Heartbeat)(nil), "msg.SC_Heartbeat")
+	proto.RegisterType((*CS_PlayerReady)(nil), "msg.CS_PlayerReady")
+	proto.RegisterType((*SC_PlayerReady)(nil), "msg.SC_PlayerReady")
+	proto.RegisterType((*CS_PlayerCancelReady)(nil), "msg.CS_PlayerCancelReady")
+	proto.RegisterType((*SC_PlayerCancelReady)(nil), "msg.SC_PlayerCancelReady")
+	proto.RegisterType((*SC_PlayerCard)(nil), "msg.SC_PlayerCard")
 }
 
 func init() { proto.RegisterFile("LandlordsProto.proto", fileDescriptor0) }
 
 var fileDescriptor0 = []byte{
-	// 195 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0xf1, 0x49, 0xcc, 0x4b,
-	0xc9, 0xc9, 0x2f, 0x4a, 0x29, 0x0e, 0x28, 0xca, 0x2f, 0xc9, 0xd7, 0x2b, 0x00, 0x91, 0x42, 0xcc,
-	0xb9, 0xc5, 0xe9, 0x4a, 0x36, 0x5c, 0x7c, 0xce, 0xc1, 0xf1, 0x01, 0x39, 0x89, 0x95, 0xa9, 0x45,
-	0x3e, 0xf9, 0xe9, 0x99, 0x79, 0x42, 0x12, 0x5c, 0xec, 0x89, 0xc9, 0xc9, 0xf9, 0xa5, 0x79, 0x25,
-	0x12, 0x8c, 0x0a, 0x8c, 0x1a, 0x9c, 0x41, 0x30, 0xae, 0x90, 0x00, 0x17, 0x73, 0x41, 0x79, 0x8a,
-	0x04, 0x13, 0x58, 0x14, 0xc4, 0x54, 0xd2, 0xe0, 0xe2, 0x0b, 0x76, 0x46, 0xd1, 0x2d, 0xc6, 0xc5,
-	0x56, 0x94, 0x5a, 0x5c, 0x9a, 0x03, 0xd1, 0x2c, 0x18, 0x04, 0xe5, 0x29, 0xd9, 0x73, 0x09, 0xc2,
-	0xed, 0x09, 0x4a, 0x4d, 0xcf, 0x2c, 0x2e, 0x49, 0x2d, 0x22, 0xc9, 0x2a, 0x6d, 0x2e, 0x41, 0xb8,
-	0x55, 0x70, 0x03, 0x70, 0xd9, 0xc6, 0xc7, 0xc5, 0xe3, 0x1c, 0x1c, 0xef, 0x91, 0x9a, 0x58, 0x54,
-	0x92, 0x94, 0x9a, 0x58, 0xa2, 0xa4, 0xc7, 0xc5, 0x13, 0xec, 0x8c, 0xe0, 0x0b, 0xc9, 0x71, 0x71,
-	0x15, 0xa7, 0x16, 0x95, 0xa5, 0x16, 0x85, 0x64, 0xe6, 0xa6, 0x82, 0xf5, 0x0a, 0x05, 0x21, 0x89,
-	0x24, 0xb1, 0x81, 0x43, 0xc8, 0x18, 0x10, 0x00, 0x00, 0xff, 0xff, 0x33, 0x3d, 0xa1, 0x92, 0x39,
-	0x01, 0x00, 0x00,
+	// 354 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x53, 0x51, 0x4b, 0xf3, 0x30,
+	0x14, 0xa5, 0x5f, 0xc7, 0x3e, 0xbd, 0x6e, 0xd3, 0x86, 0x21, 0xc5, 0x07, 0x91, 0x20, 0x38, 0x98,
+	0x54, 0x98, 0xaf, 0x82, 0x4a, 0x7c, 0x70, 0x30, 0x64, 0xa4, 0xbe, 0x8f, 0xac, 0x8d, 0xa5, 0xd0,
+	0x36, 0x23, 0xed, 0x94, 0xfd, 0x09, 0x7f, 0xb3, 0x34, 0xd9, 0xb2, 0x14, 0xac, 0xe2, 0x4b, 0xc9,
+	0x39, 0x3d, 0xf7, 0xdc, 0x93, 0xdb, 0x5b, 0x18, 0xce, 0x58, 0x11, 0x67, 0x42, 0xc6, 0xe5, 0x5c,
+	0x8a, 0x4a, 0x04, 0xab, 0xfa, 0x89, 0xdc, 0xbc, 0x4c, 0xf0, 0x1d, 0x0c, 0x48, 0xb8, 0x98, 0x67,
+	0x6c, 0xc3, 0xe5, 0x4c, 0x24, 0x69, 0x81, 0x7c, 0xf8, 0xcf, 0xa2, 0x48, 0xac, 0x8b, 0xca, 0x77,
+	0x2e, 0x9c, 0xd1, 0x21, 0xdd, 0x41, 0x74, 0x02, 0xee, 0xea, 0x23, 0xf6, 0xff, 0x29, 0xb6, 0x3e,
+	0xe2, 0x27, 0x18, 0x84, 0xa4, 0x51, 0x7d, 0x0a, 0x5d, 0xc9, 0xcb, 0x75, 0xa6, 0x8b, 0x3d, 0xba,
+	0x45, 0xe8, 0x0c, 0x0e, 0x56, 0x4a, 0x36, 0xd5, 0x06, 0x1d, 0x6a, 0x30, 0xbe, 0x07, 0xcf, 0x64,
+	0xa0, 0x3c, 0x49, 0xcb, 0x8a, 0xcb, 0x3f, 0xc5, 0x18, 0x83, 0x67, 0x62, 0x18, 0x83, 0x96, 0x24,
+	0xf8, 0xd3, 0x01, 0xd0, 0xd2, 0x69, 0xf1, 0x26, 0x1a, 0xc1, 0x9c, 0x66, 0x30, 0x74, 0x09, 0x7d,
+	0x7d, 0x7e, 0xdc, 0x26, 0xd1, 0x3d, 0x9b, 0x24, 0x3a, 0x07, 0xd0, 0xc4, 0x0b, 0xcb, 0xb9, 0xef,
+	0x2a, 0x89, 0xc5, 0xec, 0xdf, 0x13, 0x91, 0x16, 0x7e, 0x47, 0xf5, 0xb0, 0x18, 0x3c, 0x86, 0xbe,
+	0xb9, 0xfe, 0xb7, 0x91, 0x3c, 0x6b, 0x56, 0x0f, 0xd0, 0x37, 0x57, 0x55, 0xe2, 0x9b, 0x9d, 0x7b,
+	0x8d, 0x94, 0xfc, 0x68, 0x72, 0x1c, 0xe4, 0x65, 0x12, 0xec, 0x45, 0xd4, 0x92, 0xe0, 0x01, 0xf4,
+	0x48, 0xb8, 0x78, 0xe6, 0x4c, 0x56, 0x4b, 0xce, 0x2a, 0x1c, 0x40, 0x2f, 0x24, 0x7b, 0x5c, 0xc7,
+	0x2d, 0xb9, 0x7c, 0xe7, 0xf2, 0x35, 0xcd, 0xb9, 0x32, 0x44, 0xd4, 0x62, 0xf0, 0xb5, 0xb5, 0x31,
+	0x94, 0xb3, 0x78, 0xf3, 0xd3, 0x08, 0xf1, 0xc8, 0xda, 0x10, 0xad, 0x6e, 0xfb, 0x2e, 0x13, 0x18,
+	0x1a, 0x5f, 0xc2, 0x8a, 0x88, 0x67, 0xbf, 0xbb, 0x07, 0x30, 0x34, 0xee, 0x76, 0x4d, 0x5b, 0x8f,
+	0x2b, 0x6b, 0x7a, 0x84, 0xc9, 0xb8, 0x16, 0x46, 0x4c, 0xc6, 0xca, 0xda, 0xad, 0x85, 0x1a, 0x2d,
+	0xbb, 0xea, 0x17, 0xb9, 0xfd, 0x0a, 0x00, 0x00, 0xff, 0xff, 0x42, 0xfc, 0x1e, 0x68, 0x3a, 0x03,
+	0x00, 0x00,
 }
