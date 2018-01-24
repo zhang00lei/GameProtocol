@@ -32,6 +32,7 @@ message CS_PlayerInfo{
 }
 message SC_PlayerInfo{
 	PlayerInfo playerInfo=1;
+	sint32 result=2;
 }
 
 message CS_Heartbeat{
