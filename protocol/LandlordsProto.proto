@@ -9,6 +9,7 @@ message SC_PlayerLogin{
 	//0成功 1账号错误 2密码错误
 	sint32 result=1; 
 	uint64 playerId=2;
+	repeated sint32 temp =3;
 }
 
 message CS_PlayerRegister{
