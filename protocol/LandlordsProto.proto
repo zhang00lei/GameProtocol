@@ -1,64 +1,64 @@
-syntax="proto3";
+syntax = "proto2";
 package msg;
 
 message CS_PlayerLogin{
-	string account=1;
-	string pwd=2;
+	required	string account=1;
+	required	string pwd=2;
 }
 message SC_PlayerLogin{
 	//0成功 1账号错误 2密码错误
-	sint32 result=1; 
-	uint64 playerId=2;
+	required sint32 result=1; 
+	required uint64 playerId=2;
 	repeated sint32 temp =3;
 }
 
 message CS_PlayerRegister{
-	string account=1;
-	string pwd=2;
+		required	string account=1;
+		required	string pwd=2;
 }
 message SC_PlayerRegister{
 	//0成功 1账号错误
-	sint32 result =1; 
+		required	sint32 result =1; 
 }
 
 message PlayerInfo{
-	uint64 playerId=1;
-	string playerAccount=2;
-	string playerName=3;
-	uint64 playerCoin=4;
+		required	uint64 playerId=1;
+		required	string playerAccount=2;
+		optional	string playerName=3;
+		optional 	uint64 playerCoin=4;
 }
 
 message CS_PlayerInfo{
-	sint32 playerId=1;
+		required	sint32 playerId=1;
 }
 message SC_PlayerInfo{
-	PlayerInfo playerInfo=1;
+		required	PlayerInfo playerInfo=1;
 	//-1:用户不存在 0:用户存在
-	sint32 result=2;
+		required	sint32 result=2;
 }
 
 message CS_Heartbeat{
 	
 }
 message SC_Heartbeat{
-	sint64 serverTime=1;
+		required	sint64 serverTime=1;
 }
 
 //用户准备
 message CS_PlayerReady{
-	uint64 playerId=1;
+		required	uint64 playerId=1;
 }
 message SC_PlayerReady{
-	sint32 result = 1;
+		required	sint32 result = 1;
 }
 
 //用户取消准备
 message CS_PlayerCancelReady{
-	uint64 playerId=1;
+		required	uint64 playerId=1;
 }
 message SC_PlayerCancelReady{
 	//0:成功 -1:失败
-	sint32 result = 1;
+		required	sint32 result = 1;
 }
 
 //下发卡牌信息

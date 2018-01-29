@@ -15,17 +15,15 @@ namespace msg
   {
     public CS_PlayerLogin() {}
     
-    private string _account = "";
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"account", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
+    private string _account;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"account", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string account
     {
       get { return _account; }
       set { _account = value; }
     }
-    private string _pwd = "";
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"pwd", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
+    private string _pwd;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"pwd", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string pwd
     {
       get { return _pwd; }
@@ -41,17 +39,15 @@ namespace msg
   {
     public SC_PlayerLogin() {}
     
-    private int _result = default(int);
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
+    private int _result;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
     public int result
     {
       get { return _result; }
       set { _result = value; }
     }
-    private ulong _playerId = default(ulong);
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(ulong))]
+    private ulong _playerId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public ulong playerId
     {
       get { return _playerId; }
@@ -74,17 +70,15 @@ namespace msg
   {
     public CS_PlayerRegister() {}
     
-    private string _account = "";
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"account", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
+    private string _account;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"account", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string account
     {
       get { return _account; }
       set { _account = value; }
     }
-    private string _pwd = "";
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"pwd", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
+    private string _pwd;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"pwd", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string pwd
     {
       get { return _pwd; }
@@ -100,9 +94,8 @@ namespace msg
   {
     public SC_PlayerRegister() {}
     
-    private int _result = default(int);
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
+    private int _result;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
     public int result
     {
       get { return _result; }
@@ -118,17 +111,15 @@ namespace msg
   {
     public PlayerInfo() {}
     
-    private ulong _playerId = default(ulong);
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(ulong))]
+    private ulong _playerId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public ulong playerId
     {
       get { return _playerId; }
       set { _playerId = value; }
     }
-    private string _playerAccount = "";
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"playerAccount", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
+    private string _playerAccount;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"playerAccount", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public string playerAccount
     {
       get { return _playerAccount; }
@@ -160,9 +151,8 @@ namespace msg
   {
     public CS_PlayerInfo() {}
     
-    private int _playerId = default(int);
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
+    private int _playerId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
     public int playerId
     {
       get { return _playerId; }
@@ -178,17 +168,15 @@ namespace msg
   {
     public SC_PlayerInfo() {}
     
-    private msg.PlayerInfo _playerInfo = null;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"playerInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
+    private msg.PlayerInfo _playerInfo;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"playerInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public msg.PlayerInfo playerInfo
     {
       get { return _playerInfo; }
       set { _playerInfo = value; }
     }
-    private int _result = default(int);
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
+    private int _result;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
     public int result
     {
       get { return _result; }
@@ -214,9 +202,8 @@ namespace msg
   {
     public SC_Heartbeat() {}
     
-    private long _serverTime = default(long);
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"serverTime", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue(default(long))]
+    private long _serverTime;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"serverTime", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
     public long serverTime
     {
       get { return _serverTime; }
@@ -232,9 +219,8 @@ namespace msg
   {
     public CS_PlayerReady() {}
     
-    private ulong _playerId = default(ulong);
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(ulong))]
+    private ulong _playerId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public ulong playerId
     {
       get { return _playerId; }
@@ -250,9 +236,8 @@ namespace msg
   {
     public SC_PlayerReady() {}
     
-    private int _result = default(int);
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
+    private int _result;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
     public int result
     {
       get { return _result; }
@@ -268,9 +253,8 @@ namespace msg
   {
     public CS_PlayerCancelReady() {}
     
-    private ulong _playerId = default(ulong);
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(ulong))]
+    private ulong _playerId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"playerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public ulong playerId
     {
       get { return _playerId; }
@@ -286,9 +270,8 @@ namespace msg
   {
     public SC_PlayerCancelReady() {}
     
-    private int _result = default(int);
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
+    private int _result;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
     public int result
     {
       get { return _result; }
