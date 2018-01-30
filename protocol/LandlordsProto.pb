@@ -1,13 +1,12 @@
 
-Þ
+®
 LandlordsProto.protomsg"<
 CS_PlayerLogin
 account (	Raccount
-pwd (	Rpwd"X
+pwd (	Rpwd"D
 SC_PlayerLogin
 result (Rresult
-playerId (RplayerId
-temp (Rtemp"?
+playerId (RplayerId"?
 CS_PlayerRegister
 account (	Raccount
 pwd (	Rpwd"+
@@ -34,14 +33,13 @@ playerInfo
 SC_Heartbeat
 
 serverTime (R
-serverTime",
-CS_PlayerReady
-playerId (RplayerId"(
+serverTime"
+CS_PlayerReady"(
 SC_PlayerReady
-result (Rresult"2
-CS_PlayerCancelReady
-playerId (RplayerId".
+result (Rresult"
+CS_PlayerCancelReady".
 SC_PlayerCancelReady
-result (Rresult"'
+result (Rresult"C
 SC_PlayerCard
-cardId (RcardId
+cardId (RcardId
+playerId (RplayerId
